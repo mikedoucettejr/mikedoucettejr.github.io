@@ -1,20 +1,20 @@
 body {
-  background-color: #ececf9;
+  background-color: #eceff9;
 }
 
 #top {
-  color: #3d3d5c;
+  color: #33334d;
 }
 
 #top h1 {
     font-family: 'Poppins', sans-serif;
     text-transform: lowercase;
     text-align: center;
+    /* text-shadow: 3px 2px #d1d1e0;*/
 }
 #top p {
     font-family: 'Lora', serif;
     text-align: center;
-    color
 }
 #middle img {
     display: block;
@@ -25,6 +25,6 @@ body {
 .center {
     margin: auto;
     width: 70%;
-    border: 3px solid #3d3d5c;
-    padding: 10px;
+    border: 5px solid #c2c2d6;
+    padding: 0px;
 }
