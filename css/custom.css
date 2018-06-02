@@ -1,0 +1,154 @@
+/* click on the skeleton.css file and go to line 127 for typography info */
+
+body {
+   background-color:  #CDCDCD;
+
+}
+
+.text-center {
+  color: black;
+  font-size: 15px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+
+.head-intro {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.subheading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 43px;
+  text-align: center;
+  padding-top: 5px;
+  padding-right: 0px;
+}
+
+.welcome {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  text-align: center;
+  padding-top: 5px;
+}
+
+/* apply these to wrap text around images to get them to align as you wish */
+
+/* img class="align-right" */
+.align-right {
+    float: right;
+    margin: 0 0 0.5em 1em;
+    max-width: 100%;
+}
+
+/* img class="align-left" */
+.align-left {
+    float: left;
+    margin: 0 1em 0.5em 0;
+    position: relative;
+    top: 0.5em;
+    max-width: 50%;
+}
+.align-center {
+    display: block;
+    margin: 1em auto;
+    position: relative;
+    top: 0.5em;
+    }
+
+.michaelphoto {
+  width: 90%;
+  border-width: 10px;
+  border-color: #4d4d4d;
+  border-style: double;
+}
+
+.regentstreetphoto {
+  width: 100%;
+  border-width: 10px;
+  border-color: #4d1919;
+  border-style: double;
+}
+
+.class-photo {
+  width: 60%;
+  padding-left: 100px;
+  padding-bottom: 40px;
+}
+
+.camus-photo {
+  width: 60%;
+}
+
+.memento-photo {
+  width: 27.5%
+}
+
+.grandbudapest-photo {
+  max-width: 88%;
+}
+
+.badbad-photo {
+  padding-left: 40px;
+  width: 170%;
+}
+
+.textblock {
+  display: block;
+  max-width: 450px;
+  padding-left: 20px;
+ /* padding-top: 40px; */
+}
+
+.interest-images {
+  padding-left: 75px;
+}
+
+.interestphotos1 {
+  width: 14.7%;
+}
+
+.interestphotos2 {
+  width: 22.5%;
+}
+
+.interestphotos3 {
+  width: 24.5%;
+}
+
+.interestphotos4 {
+  width: 26.4%;
+}
+
+.interestphotos5 {
+  width: 10.25%;
+}
+
+.screen {
+  background-color: white;
+  padding: 18px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 0px;
+  border-color: darkgrey;
+}
+
+.screen2 {
+  background-color: white;
+  padding: 10px;
+
+}
+
+.subheading {
+  padding-top: 32px;
+  align-items: center;
+}
+
+.list-header {
+  font-size: 30px
+}

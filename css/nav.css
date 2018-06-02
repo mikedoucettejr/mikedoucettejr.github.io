@@ -1,0 +1,98 @@
+/* Thanks to https://codepen.io/lisa_c/pen/akjiy */
+.nav ul {
+  list-style: none;
+  background-color: #C06014;
+  background: linear-gradient(to bottom right, #C06014, #a25211);
+ /* this is the color of the top nav bar */
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.nav li {
+  font-family: 'Montserrat'
+, sans-serif; /* I changed this to my choice of google font */
+  font-size: 1.2em;
+  line-height: 40px;
+  height: 40px;
+  border-bottom: 1px solid #888;
+  margin-bottom: 0; /* this was added to fix inheritance issue */
+}
+
+.nav a {
+  text-decoration: none;
+  color: #fff; /* this is the color of the nav bar text */
+  display: block;
+  transition: .3s background-color;
+}
+
+.nav a:hover {
+  background-color: #CDCDCD;
+}
+
+.nav a.active {
+  background-color: #CDCDCD; /* this is the color of the clicked nav link */
+  color: #444;
+  cursor: default;
+}
+/* this is the css code for the responsiveness of the .nav navigation */
+@media screen and (min-width: 600px) {
+  .nav li {
+    width: 120px;
+    border-bottom: none;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4em;
+  } /* this is nested css. Don't delete this bracket, or it will break */
+
+  .nav li {
+    display: inline-block;
+    margin-right: -4px;
+  }
+}
+/* below is the css nav code for the classes you are taking sub-nav. */
+.sub-nav ul {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.sub-nav a {
+  text-decoration: none;
+  display: block;
+  transition: .3s background-color;
+  color: black;
+
+
+}
+
+.sub-nav li {
+  display: inline-block;
+  margin-right: -4px;
+  width: 110px;
+  border-bottom: none;
+  /*height: 40px;
+  line-height: 40px; */
+  font-family: 'Montserrat', serif;
+  font-size: 17px;
+  padding-top: 5px;
+  color: darkgrey;
+}
+
+
+.sub-nav a.active {
+  color: white;
+  font-weight: bold;
+}
+
+
+/* this is the css code for the responsiveness of the .sub-nav navigation */
+@media screen and (min-width: 600px) {
+  .sub-nav li {
+    width: 100px;
+    border-bottom: none;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4em;
+  }
+}
