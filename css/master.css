@@ -8,7 +8,7 @@ body {
 
 #top h1 {
     font-family: 'Poppins', sans-serif;
-    text-transform: lowercase;
+    /*text-transform: lowercase;*/
     text-align: center;
     /* text-shadow: 3px 2px #d1d1e0;*/
 }
