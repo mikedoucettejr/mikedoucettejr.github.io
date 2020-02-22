@@ -1,5 +1,5 @@
 body {
-  background-color: #eceff9;
+  background-color: #f9f5ed;
 }
 
 #top {
@@ -10,7 +10,7 @@ body {
     font-family: 'Poppins', sans-serif;
     /*text-transform: lowercase;*/
     text-align: center;
-    /* text-shadow: 3px 2px #d1d1e0;*/
+    text-shadow:0px 21px #e0b2a0;
 }
 #top p {
     font-family: 'Lora', serif;
@@ -21,10 +21,10 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 45%;
-  }
+}
 .center {
     margin: auto;
-    width: 70%;
-    border: 5px solid #c2c2d6;
+    width: 90%;
+    border: 53px solid #c9a45c;
     padding: 0px;
 }
