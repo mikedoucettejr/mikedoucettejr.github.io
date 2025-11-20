@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" width="220" height="60">
+  <g transform="translate(110, 30)">
+    <!-- Circular icon with bright blue outer ring -->
+    <circle cx="-50" cy="0" r="22" fill="#3399FF"/>
+    <!-- White inner circle -->
+    <circle cx="-50" cy="0" r="17" fill="white"/>
+    <!-- Lowercase 'i' symbol in dark blue -->
+    <circle cx="-50" cy="-8" r="2.5" fill="#1A3A5F"/>
+    <line x1="-50" y1="-3" x2="-50" y2="10" stroke="#1A3A5F" stroke-width="2.2" stroke-linecap="round"/>
+    
+    <!-- Text: "informed" in lowercase -->
+    <text x="32" y="-3" font-family="Inter, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#1A3A5F" letter-spacing="-0.4" text-anchor="middle">informed</text>
+    <!-- Text: "Systems LLC" -->
+    <text x="32" y="19" font-family="Inter, -apple-system, sans-serif" font-size="19" font-weight="400" fill="#1A3A5F" letter-spacing="-0.2" text-anchor="middle">Systems LLC</text>
+  </g>
+</svg>
+
