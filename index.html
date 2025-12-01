@@ -108,6 +108,12 @@
         cursor: default;
         pointer-events: none;
       }
+      .divider {
+        width: 100%;
+        height: 1px;
+        background-color: #e0e0e0;
+        margin: 0 0 20px 0;
+      }
       .hero-frame {
         flex: 0 0 53%;
         max-height: 100%;
@@ -319,21 +325,164 @@
       }
       @media (max-width: 768px) {
         body {
-          padding-top: 150px;
+          padding-top: 40px;
+          padding-bottom: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
         }
         .hero-wrapper {
-          width: 90vw;
+          width: 100%;
+          max-width: 100%;
           flex-direction: column;
           align-items: flex-start;
-          gap: 24px;
+          gap: 30px;
         }
         .hero-text {
           flex: none;
-          font-size: 14px;
+          width: 100%;
+          font-size: 13px;
+          padding-top: 0;
         }
         .hero-frame {
           flex: none;
           width: 100%;
+          max-height: 50vh;
+        }
+        .logo {
+          width: 100%;
+          max-width: 300px;
+          margin-bottom: 12px;
+        }
+        .divider {
+          margin-bottom: 16px;
+        }
+        .hero-line-secondary {
+          margin-top: 20px;
+          font-size: 13px;
+          flex-wrap: wrap;
+        }
+        .social-links {
+          gap: 8px;
+        }
+        .social-link {
+          width: 28px;
+          height: 28px;
+        }
+        .social-link-email {
+          width: 36px;
+          height: 36px;
+        }
+        .hero-description {
+          font-size: 13px;
+          margin-top: 16px;
+          margin-bottom: 24px;
+          max-width: 100%;
+        }
+        .menu-tree {
+          font-size: 12px;
+          margin-top: 24px;
+        }
+        .menu-level-2 {
+          margin-left: 16px;
+          font-size: 12px;
+        }
+        .menu-level-3 {
+          margin-left: 16px;
+          font-size: 11px;
+        }
+        .menu-group {
+          margin-left: 24px;
+        }
+        .project-modal {
+          width: 95vw;
+          height: 95vh;
+          max-width: 100%;
+          max-height: 100%;
+        }
+        .project-modal-close {
+          top: 12px;
+          right: 16px;
+          font-size: 32px;
+          width: 44px;
+          height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .project-modal-body {
+          padding: 16px;
+        }
+        .project-modal-body h1 {
+          font-size: 22px;
+        }
+        .project-modal-body h2 {
+          font-size: 20px;
+        }
+        .project-modal-body h3 {
+          font-size: 18px;
+        }
+        .project-modal-body p {
+          font-size: 14px;
+        }
+        .menu-overlay {
+          padding: 24px 20px;
+        }
+        .menu-header {
+          font-size: 16px;
+          margin-bottom: 32px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        body {
+          padding-top: 30px;
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .hero-text {
+          font-size: 12px;
+        }
+        .logo {
+          max-width: 250px;
+        }
+        .hero-line-secondary {
+          font-size: 12px;
+        }
+        .hero-description {
+          font-size: 12px;
+        }
+        .menu-tree {
+          font-size: 11px;
+        }
+        .menu-level-2 {
+          font-size: 11px;
+          margin-left: 12px;
+        }
+        .menu-level-3 {
+          font-size: 10px;
+          margin-left: 12px;
+        }
+        .menu-group {
+          margin-left: 20px;
+        }
+        .project-modal {
+          width: 100vw;
+          height: 100vh;
+        }
+        .project-modal-body {
+          padding: 12px;
+        }
+        .project-modal-body h1 {
+          font-size: 20px;
+        }
+        .project-modal-body h2 {
+          font-size: 18px;
+        }
+        .project-modal-body h3 {
+          font-size: 16px;
+        }
+        .project-modal-body p {
+          font-size: 13px;
         }
       }
     </style>
@@ -342,6 +491,7 @@
     <div class="hero-wrapper">
       <div class="hero-text">
         <img src="assets/images/logo.svg" alt="Informed Systems LLC Logo" class="logo" />
+        <div class="divider"></div>
         <div class="hero-line">Informed Systems LLC</div>
         <div class="hero-line hero-line-secondary">
           <span>Mike Doucette</span>
