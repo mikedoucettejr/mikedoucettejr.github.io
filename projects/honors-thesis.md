@@ -1,2 +1,0 @@
-# HONORS THESIS
-

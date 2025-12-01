@@ -31,6 +31,13 @@
         justify-content: flex-start;
         min-height: 100vh;
       }
+      html.modal-open,
+      body.modal-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+      }
       .hero-wrapper {
         width: 80vw;
         max-width: 1200px;
@@ -194,6 +201,14 @@
         font-weight: 400;
         text-transform: none;
         margin-bottom: 2px;
+        position: relative;
+        padding-left: 16px;
+      }
+      .menu-level-3::before {
+        content: "•";
+        position: absolute;
+        left: -8px;
+        color: #333;
       }
       .menu-level-4 {
         margin-left: 72px;
@@ -271,58 +286,197 @@
       .project-modal-body {
         flex: 1;
         overflow-y: auto;
-        padding: 24px;
+        padding: 32px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        font-size: 16px;
+        line-height: 1.5;
+        color: #24292f;
+        word-wrap: break-word;
       }
       .project-modal-body h1,
       .project-modal-body h2,
-      .project-modal-body h3 {
+      .project-modal-body h3,
+      .project-modal-body h4,
+      .project-modal-body h5,
+      .project-modal-body h6 {
         margin-top: 24px;
         margin-bottom: 16px;
         font-weight: 600;
+        line-height: 1.25;
+        color: #24292f;
       }
       .project-modal-body h1 {
-        font-size: 28px;
+        font-size: 2em;
+        padding-bottom: 0.3em;
+        border-bottom: 1px solid #d0d7de;
       }
       .project-modal-body h2 {
-        font-size: 24px;
+        font-size: 1.5em;
+        padding-bottom: 0.3em;
+        border-bottom: 1px solid #d0d7de;
       }
       .project-modal-body h3 {
-        font-size: 20px;
+        font-size: 1.25em;
+      }
+      .project-modal-body h4 {
+        font-size: 1em;
+      }
+      .project-modal-body h5 {
+        font-size: 0.875em;
+      }
+      .project-modal-body h6 {
+        font-size: 0.85em;
+        color: #656d76;
       }
       .project-modal-body p {
-        margin-bottom: 16px;
-        line-height: 1.6;
+        margin-bottom: 10px;
+        margin-top: 0;
       }
       .project-modal-body ul,
       .project-modal-body ol {
+        margin-top: 0;
         margin-bottom: 16px;
-        padding-left: 24px;
+        padding-left: 2em;
       }
       .project-modal-body li {
-        margin-bottom: 8px;
+        margin-bottom: 0.25em;
+      }
+      .project-modal-body li > p {
+        margin-top: 16px;
+      }
+      .project-modal-body li + li {
+        margin-top: 0.25em;
       }
       .project-modal-body img {
         max-width: 100%;
         height: auto;
-        margin: 16px 0;
+        margin: 0;
+        box-sizing: content-box;
+        background-color: #ffffff;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+      }
+      .project-modal-body img:hover {
+        opacity: 0.8;
+      }
+      .image-lightbox-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 4000;
+        cursor: pointer;
+      }
+      .image-lightbox-overlay.active {
+        display: flex;
+      }
+      .image-lightbox-content {
+        max-width: 90vw;
+        max-height: 90vh;
+        position: relative;
+      }
+      .image-lightbox-content img {
+        max-width: 100%;
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        cursor: default;
+      }
+      .image-lightbox-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: #ffffff;
+        font-size: 32px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        line-height: 1;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+      }
+      .image-lightbox-close:hover {
+        opacity: 0.7;
       }
       .project-modal-body code {
-        background-color: #f5f5f5;
-        padding: 2px 6px;
-        border-radius: 3px;
-        font-family: 'Courier New', monospace;
-        font-size: 0.9em;
+        background-color: rgba(175, 184, 193, 0.2);
+        padding: 0.2em 0.4em;
+        border-radius: 6px;
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+        font-size: 85%;
       }
       .project-modal-body pre {
-        background-color: #f5f5f5;
+        background-color: #f6f8fa;
         padding: 16px;
-        border-radius: 4px;
+        border-radius: 6px;
         overflow-x: auto;
         margin-bottom: 16px;
+        font-size: 85%;
+        line-height: 1.45;
       }
       .project-modal-body pre code {
         background-color: transparent;
         padding: 0;
+        border-radius: 0;
+        font-size: 100%;
+        word-break: normal;
+        white-space: pre;
+      }
+      .project-modal-body blockquote {
+        padding: 0 1em;
+        color: #656d76;
+        border-left: 0.25em solid #d0d7de;
+        margin: 0;
+        margin-bottom: 16px;
+      }
+      .project-modal-body table {
+        border-spacing: 0;
+        border-collapse: collapse;
+        display: block;
+        width: max-content;
+        max-width: 100%;
+        overflow: auto;
+        margin-bottom: 16px;
+      }
+      .project-modal-body table th,
+      .project-modal-body table td {
+        padding: 6px 13px;
+        border: 1px solid #d0d7de;
+      }
+      .project-modal-body table th {
+        font-weight: 600;
+        background-color: #f6f8fa;
+      }
+      .project-modal-body table tr {
+        background-color: #ffffff;
+        border-top: 1px solid #d0d7de;
+      }
+      .project-modal-body table tr:nth-child(2n) {
+        background-color: #f6f8fa;
+      }
+      .project-modal-body hr {
+        height: 0.25em;
+        padding: 0;
+        margin: 24px 0;
+        background-color: #d0d7de;
+        border: 0;
+      }
+      .project-modal-body a {
+        color: #0969da;
+        text-decoration: none;
+      }
+      .project-modal-body a:hover {
+        text-decoration: underline;
+      }
+      .project-modal-body strong {
+        font-weight: 600;
+      }
+      .project-modal-body em {
+        font-style: italic;
       }
       .site-footer {
         width: 100vw;
@@ -368,7 +522,7 @@
         .hero-text {
           flex: none;
           width: 100%;
-          font-size: 13px;
+          font-size: 15px;
           padding-top: 0;
         }
         .hero-frame {
@@ -379,14 +533,14 @@
         .logo {
           width: 100%;
           max-width: 300px;
-          margin-bottom: 12px;
+          margin: 0 auto 12px auto;
         }
         .divider {
           margin-bottom: 16px;
         }
         .hero-line-secondary {
           margin-top: 20px;
-          font-size: 13px;
+          font-size: 15px;
           flex-wrap: wrap;
         }
         .social-links {
@@ -401,22 +555,26 @@
           height: 36px;
         }
         .hero-description {
-          font-size: 13px;
+          font-size: 15px;
           margin-top: 16px;
           margin-bottom: 24px;
           max-width: 100%;
         }
         .menu-tree {
-          font-size: 12px;
+          font-size: 14px;
           margin-top: 24px;
         }
         .menu-level-2 {
           margin-left: 16px;
-          font-size: 12px;
+          font-size: 14px;
         }
         .menu-level-3 {
           margin-left: 16px;
-          font-size: 11px;
+          font-size: 13px;
+          padding-left: 14px;
+        }
+        .menu-level-3::before {
+          left: -6px;
         }
         .menu-group {
           margin-left: 24px;
@@ -439,15 +597,16 @@
         }
         .project-modal-body {
           padding: 16px;
+          font-size: 14px;
         }
         .project-modal-body h1 {
-          font-size: 22px;
+          font-size: 1.75em;
         }
         .project-modal-body h2 {
-          font-size: 20px;
+          font-size: 1.375em;
         }
         .project-modal-body h3 {
-          font-size: 18px;
+          font-size: 1.125em;
         }
         .project-modal-body p {
           font-size: 14px;
@@ -456,13 +615,13 @@
           padding: 24px 20px;
         }
         .menu-header {
-          font-size: 16px;
+          font-size: 18px;
           margin-bottom: 32px;
         }
         .site-footer {
           padding: 10px 16px;
           margin-top: 30px;
-          font-size: 10px;
+          font-size: 12px;
         }
       }
       
@@ -473,27 +632,32 @@
           padding-right: 16px;
         }
         .hero-text {
-          font-size: 12px;
+          font-size: 14px;
         }
         .logo {
           max-width: 250px;
+          margin: 0 auto 12px auto;
         }
         .hero-line-secondary {
-          font-size: 12px;
+          font-size: 14px;
         }
         .hero-description {
-          font-size: 12px;
+          font-size: 14px;
         }
         .menu-tree {
-          font-size: 11px;
+          font-size: 13px;
         }
         .menu-level-2 {
-          font-size: 11px;
+          font-size: 13px;
           margin-left: 12px;
         }
         .menu-level-3 {
-          font-size: 10px;
+          font-size: 12px;
           margin-left: 12px;
+          padding-left: 12px;
+        }
+        .menu-level-3::before {
+          left: -4px;
         }
         .menu-group {
           margin-left: 20px;
@@ -504,23 +668,24 @@
         }
         .project-modal-body {
           padding: 12px;
+          font-size: 14px;
         }
         .project-modal-body h1 {
-          font-size: 20px;
+          font-size: 1.625em;
         }
         .project-modal-body h2 {
-          font-size: 18px;
+          font-size: 1.25em;
         }
         .project-modal-body h3 {
-          font-size: 16px;
+          font-size: 1.125em;
         }
         .project-modal-body p {
-          font-size: 13px;
+          font-size: 14px;
         }
         .site-footer {
           padding: 8px 12px;
           margin-top: 20px;
-          font-size: 10px;
+          font-size: 12px;
         }
       }
     </style>
@@ -550,59 +715,27 @@
           Versatile Installation Project Manager with a proven track record leading full-lifecycle implementations and installations – from cloud-based data systems to physical builds. Skilled in coordinating cross-functional teams, interpreting technical specifications, managing site logistics, and delivering scalable solutions across both digital and real-world environments.         </div>
         <div class="menu-tree">
           <div class="menu-level-1">EXTERNAL PROJECT MANAGEMENT</div>
-          <div class="menu-level-2 collapsible" data-group="digital-systems">DIGITAL SYSTEMS IMPLEMENTATION</div>
-          <div class="menu-group" data-group="digital-systems">
-            <button class="menu-level-3 project-link" data-project="erp-apricot">ERP SYSTEMS IMPLEMENTATION (APRICOT)</button>
-            <button class="menu-level-3 project-link" data-project="reporting-airtable">REPORTING SYSTEMS IMPLEMENTATION (AIRTABLE)</button>
-          </div>
+          <div class="menu-level-2 collapsible" data-group="digital-systems" data-markdown="digital-systems">DIGITAL SYSTEMS IMPLEMENTATION</div>
+          <div class="menu-group" data-group="digital-systems"></div>
 
-          <div class="menu-level-2 collapsible" data-group="carpentry-av">CARPENTRY, INSTALLATION, &amp; AV</div>
-          <div class="menu-group" data-group="carpentry-av">
-            <button class="menu-level-3 project-link" data-project="object-fabrication">OBJECT FABRICATION</button>
-            <button class="menu-level-3 project-link" data-project="set-design">SET DESIGN</button>
-            <button class="menu-level-3 project-link" data-project="kitchens-additions">KITCHENS &amp; ADDITIONS</button>
-            <button class="menu-level-3 project-link" data-project="tony-hawk-jumbotron">TONY HAWK JUMBOTRON</button>
-            <button class="menu-level-3 project-link" data-project="other-carpentry">OTHER</button>
-          </div>
+          <div class="menu-level-2 collapsible" data-group="carpentry-av" data-markdown="carpentry-av">CARPENTRY, INSTALLATION, &amp; AV</div>
+          <div class="menu-group" data-group="carpentry-av"></div>
 
 
           <div class="menu-level-1">INTERNAL PROJECTS</div>
-          <div class="menu-level-2 collapsible" data-group="software-apps">SOFTWARE APPLICATIONS</div>
-          <div class="menu-group" data-group="software-apps">
-            <button class="menu-level-3 project-link" data-project="rag-app">RAG APP</button>
-            <button class="menu-level-3 project-link" data-project="radio-mp3-internal">RADIO MP3</button>
-            <button class="menu-level-3 project-link" data-project="ideal-image">IDEAL IMAGE</button>
-            <button class="menu-level-3 project-link" data-project="confession-ai">CONFESSION.AI</button>
-          </div>
+          <!-- <div class="menu-level-2 collapsible" data-group="software-apps" data-markdown="software-apps">SOFTWARE APPLICATIONS</div>
+          <div class="menu-group" data-group="software-apps"></div> -->
 
-          <div class="menu-level-2 collapsible" data-group="art-film-music">ART, FILM, MUSIC</div>
-          <div class="menu-group" data-group="art-film-music">
-            <button class="menu-level-3 project-link" data-project="merch">MERCH</button>
-            <button class="menu-level-3 project-link" data-project="fresco">FRESCO &amp; OIL</button>
-            <button class="menu-level-3 project-link" data-project="aura">AURA</button>
-            <button class="menu-level-3 project-link" data-project="can-i-borrow">CAN I BORROW … SCRIPT SUPERVISOR</button>
-            <button class="menu-level-3 project-link" data-project="tapes">TAPES</button>
-            <button class="menu-level-3 project-link" data-project="radio-mp3-music">RADIO MP3</button>
-          </div>
+          <div class="menu-level-2 collapsible" data-group="art-film-music" data-markdown="art-film-music">ART, FILM, MUSIC</div>
+          <div class="menu-group" data-group="art-film-music"></div>
 
           <div class="menu-level-1">EDUCATION & INTERNSHIPS</div>
-          <div class="menu-level-2 collapsible" data-group="certifications">CERTIFICATIONS</div>
-          <div class="menu-group" data-group="certifications">
-            <button class="menu-level-3 project-link" data-project="pmp">PROJECT MANAGEMENT PROFESSIONAL (PMP)</button>
-            <button class="menu-level-3 project-link" data-project="databricks-path">DATABRICKS ENGINEER LEARNING PATH</button>
-          </div>
-          <div class="menu-level-2 collapsible" data-group="policy">INTERNSHIPS</div>
-          <div class="menu-group" data-group="policy">
-            <button class="menu-level-3 project-link" data-project="urban3">URBAN3</button>
-            <button class="menu-level-3 project-link" data-project="adu-policy-research">ADU POLICY RESEARCH</button>
-            <button class="menu-level-3 project-link" data-project="mind-perception-lab">MIND PERCEPTION LAB</button>
-            <button class="menu-level-3 project-link" data-project="digital-humanities-lab">DIGITAL HUMANITIES LAB</button>
-          </div>
-          <div class="menu-level-2 collapsible" data-group="unc-ch">UNC CHAPEL HILL</div>
-          <div class="menu-group" data-group="unc-ch">
-            <button class="menu-level-3 project-link" data-project="unc-chapel-hill">BSIS: INFORMATION SCIENCE – BA: CULTURAL STUDIES – MINOR: COMPUTER SCIENCE</button>
-            <button class="menu-level-3 project-link" data-project="honors-thesis">HONORS THESIS</button>
-          </div>
+          <div class="menu-level-2 collapsible" data-group="certifications" data-markdown="certifications">CERTIFICATIONS</div>
+          <div class="menu-group" data-group="certifications"></div>
+          <div class="menu-level-2 collapsible" data-group="internships" data-markdown="internships">INTERNSHIPS</div>
+          <div class="menu-group" data-group="internships"></div>
+          <div class="menu-level-2 collapsible" data-group="education" data-markdown="education">EDUCATION</div>
+          <div class="menu-group" data-group="education"></div>
         </div>
       </div>
       <div class="hero-frame">
@@ -620,6 +753,12 @@
         </div>
       </div>
     </div>
+    <div class="image-lightbox-overlay" id="image-lightbox-overlay">
+      <div class="image-lightbox-content">
+        <button class="image-lightbox-close" id="image-lightbox-close">&times;</button>
+        <img id="lightbox-image" src="" alt="" />
+      </div>
+    </div>
 
     <script>
       const image = document.getElementById('main-image');
@@ -627,49 +766,300 @@
         this.classList.toggle('inverted');
       });
 
-      // Collapsible 2nd-tier groups
+      // Store markdown content for each tier 2 item
+      const markdownCache = {};
+
+      // Function to extract h1 heading from markdown
+      function extractH1(markdown) {
+        const lines = markdown.split('\n');
+        for (let i = 0; i < lines.length; i++) {
+          const trimmedLine = lines[i].trim();
+          if (trimmedLine.startsWith('# ') && !trimmedLine.startsWith('##')) {
+            return trimmedLine.substring(2).trim();
+          }
+        }
+        return null;
+      }
+
+      // Function to extract h2 headings from markdown
+      function extractSubsections(markdown) {
+        const lines = markdown.split('\n');
+        const subsections = [];
+        let currentSection = null;
+        
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          const trimmedLine = line.trim();
+          
+          if (trimmedLine.startsWith('## ') && !trimmedLine.startsWith('###')) {
+            // Save previous section
+            if (currentSection) {
+              currentSection.content = currentSection.contentLines.join('\n');
+              subsections.push(currentSection);
+            }
+            // Start new section
+            currentSection = {
+              title: trimmedLine.substring(3).trim(),
+              startLine: i,
+              contentLines: []
+            };
+          } else if (currentSection) {
+            // Add content to current section
+            currentSection.contentLines.push(line);
+          }
+        }
+        
+        // Save last section
+        if (currentSection) {
+          currentSection.content = currentSection.contentLines.join('\n');
+          subsections.push(currentSection);
+        }
+        
+        return subsections;
+      }
+
+      // Function to load subsections from markdown
+      function loadSubsections(groupId, markdownFile) {
+        const target = document.querySelector('.menu-group[data-group="' + groupId + '"]');
+        if (!target) return;
+
+        // Check cache first
+        if (markdownCache[markdownFile]) {
+          populateSubsections(target, markdownCache[markdownFile], markdownFile);
+          return;
+        }
+
+        // Fetch markdown file
+        fetch(`projects/${markdownFile}.md`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('File not found');
+            }
+            return response.text();
+          })
+          .then(markdown => {
+            markdownCache[markdownFile] = markdown;
+            populateSubsections(target, markdown, markdownFile);
+          })
+          .catch(error => {
+            console.error('Error loading markdown:', error);
+            target.innerHTML = '<p style="color: #999; font-size: 12px;">Content not available.</p>';
+          });
+      }
+
+      // Function to populate tier 3 items from subsections
+      function populateSubsections(container, markdown, markdownFile) {
+        const subsections = extractSubsections(markdown);
+        container.innerHTML = '';
+        
+        subsections.forEach((section, index) => {
+          const button = document.createElement('button');
+          button.className = 'menu-level-3 project-link';
+          button.setAttribute('data-markdown', markdownFile);
+          button.setAttribute('data-subsection', index);
+          button.textContent = section.title.toUpperCase();
+          button.addEventListener('click', () => {
+            openProjectModal(section.title, markdownFile, index);
+          });
+          container.appendChild(button);
+        });
+      }
+
+      // Collapsible 2nd-tier groups - only opens/closes dropdown, doesn't open modal
       document.querySelectorAll('.menu-level-2.collapsible').forEach(header => {
         header.addEventListener('click', () => {
           const groupId = header.getAttribute('data-group');
+          const markdownFile = header.getAttribute('data-markdown');
           const target = document.querySelector('.menu-group[data-group="' + groupId + '"]');
           if (!target) return;
+          
           if (target.classList.contains('open')) {
             target.classList.remove('open');
             header.classList.remove('open');
           } else {
             target.classList.add('open');
             header.classList.add('open');
+            
+            // Load subsections if markdown file is specified
+            if (markdownFile) {
+              loadSubsections(groupId, markdownFile);
+            }
           }
         });
       });
+
 
       // Project modal logic
       const projectModalOverlay = document.getElementById('project-modal-overlay');
       const projectModalBody = document.getElementById('project-modal-body');
       const projectModalClose = document.getElementById('project-modal-close');
+      const imageLightboxOverlay = document.getElementById('image-lightbox-overlay');
+      const imageLightboxClose = document.getElementById('image-lightbox-close');
+      const lightboxImage = document.getElementById('lightbox-image');
+      
+      // Image lightbox functions
+      function openImageLightbox(src, alt) {
+        if (lightboxImage && imageLightboxOverlay) {
+          lightboxImage.src = src;
+          lightboxImage.alt = alt || 'Image';
+          imageLightboxOverlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+      
+      function closeImageLightbox() {
+        if (imageLightboxOverlay) {
+          imageLightboxOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+      
+      if (imageLightboxClose) {
+        imageLightboxClose.addEventListener('click', closeImageLightbox);
+      }
+      
+      if (imageLightboxOverlay) {
+        imageLightboxOverlay.addEventListener('click', function(e) {
+          if (e.target === imageLightboxOverlay) {
+            closeImageLightbox();
+          }
+        });
+      }
+      
+      // Close lightbox on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && imageLightboxOverlay && imageLightboxOverlay.classList.contains('active')) {
+          closeImageLightbox();
+        }
+      });
 
-      function openProjectModal(title, projectKey) {
+      // Helper function to create URL-friendly slug
+      function createSlug(text) {
+        return text.toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '');
+      }
+
+      // Helper function to get markdown from cache or fetch
+      function getMarkdown(markdownFile) {
+        if (markdownCache[markdownFile]) {
+          return Promise.resolve(markdownCache[markdownFile]);
+        }
+        return fetch(`projects/${markdownFile}.md`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('File not found');
+            }
+            return response.text();
+          })
+          .then(markdown => {
+            markdownCache[markdownFile] = markdown;
+            return markdown;
+          });
+      }
+
+      function openProjectModal(title, markdownFile, subsectionIndex) {
         if (projectModalBody) {
           projectModalBody.innerHTML = '<p>Loading...</p>';
         }
         if (projectModalOverlay) {
           projectModalOverlay.classList.add('active');
         }
+        // Prevent background scrolling
+        document.documentElement.classList.add('modal-open');
+        document.body.classList.add('modal-open');
         
-        // Fetch and render markdown file
-        if (projectKey && projectModalBody) {
-          fetch(`projects/${projectKey}.md`)
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('File not found');
-              }
-              return response.text();
-            })
+        if (!markdownFile) return;
+        
+        // Update URL hash
+        if (subsectionIndex !== undefined) {
+          // Get markdown to find subsection title for URL
+          getMarkdown(markdownFile).then(markdown => {
+            const subsections = extractSubsections(markdown);
+            if (subsections[subsectionIndex]) {
+              const sectionSlug = createSlug(subsections[subsectionIndex].title);
+              window.location.hash = `${markdownFile}/${sectionSlug}`;
+            }
+          });
+        } else {
+          window.location.hash = markdownFile;
+        }
+
+        if (projectModalBody) {
+          getMarkdown(markdownFile)
             .then(markdown => {
+              // Always show full markdown
               if (typeof marked !== 'undefined') {
-                projectModalBody.innerHTML = marked.parse(markdown);
+                // Configure marked to allow HTML and preserve it
+                try {
+                  // Try using marked.use() for newer versions
+                  if (marked.use) {
+                    marked.use({
+                      breaks: true,
+                      gfm: true,
+                      headerIds: false,
+                      mangle: false
+                    });
+                  } else if (marked.setOptions) {
+                    // Fallback for older versions
+                    marked.setOptions({
+                      breaks: true,
+                      gfm: true,
+                      headerIds: false,
+                      mangle: false
+                    });
+                  }
+                } catch (e) {
+                  console.log('marked.js config error:', e);
+                }
+                // Parse markdown - HTML should be preserved by default
+                let html = marked.parse(markdown);
+                // If HTML img tags are escaped, unescape them
+                html = html.replace(/&lt;img/g, '<img')
+                           .replace(/&lt;\/img&gt;/g, '</img>')
+                           .replace(/&lt;div/g, '<div')
+                           .replace(/&lt;\/div&gt;/g, '</div>')
+                           .replace(/&quot;/g, '"')
+                           .replace(/&gt;/g, '>');
+                projectModalBody.innerHTML = html;
+                
+                // Add click handlers to all images for lightbox
+                const images = projectModalBody.querySelectorAll('img');
+                images.forEach(img => {
+                  img.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    openImageLightbox(this.src, this.alt);
+                  });
+                });
+                
+                // If subsection index is provided, scroll to that section after rendering
+                if (subsectionIndex !== undefined) {
+                  const subsections = extractSubsections(markdown);
+                  if (subsections[subsectionIndex]) {
+                    const sectionTitle = subsections[subsectionIndex].title;
+                    // Wait for DOM to update, then scroll to the heading
+                    setTimeout(() => {
+                      const headings = projectModalBody.querySelectorAll('h2');
+                      headings.forEach(heading => {
+                        if (heading.textContent.trim() === sectionTitle) {
+                          heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          // Also scroll the modal body container
+                          projectModalBody.scrollTop = heading.offsetTop - 20;
+                        }
+                      });
+                    }, 100);
+                  }
+                }
               } else {
                 projectModalBody.innerHTML = '<pre>' + markdown + '</pre>';
+                // Add click handlers to any images that might be in the pre tag
+                const images = projectModalBody.querySelectorAll('img');
+                images.forEach(img => {
+                  img.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    openImageLightbox(this.src, this.alt);
+                  });
+                });
               }
             })
             .catch(error => {
@@ -683,15 +1073,12 @@
         if (projectModalOverlay) {
           projectModalOverlay.classList.remove('active');
         }
+        // Re-enable background scrolling
+        document.documentElement.classList.remove('modal-open');
+        document.body.classList.remove('modal-open');
       }
 
-      document.querySelectorAll('.project-link').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const title = btn.textContent.trim();
-          const key = btn.getAttribute('data-project');
-          openProjectModal(title, key);
-        });
-      });
+      // Project links are now created dynamically, so event listeners are attached in populateSubsections
 
       if (projectModalClose) {
         projectModalClose.addEventListener('click', closeProjectModal);
@@ -704,6 +1091,108 @@
           }
         });
       }
+
+      // Handle URL hash on page load and hash changes
+      function handleHashNavigation() {
+        const hash = window.location.hash.substring(1);
+        if (!hash) {
+          closeProjectModal();
+          return;
+        }
+        
+        const parts = hash.split('/');
+        const markdownFile = parts[0];
+        const sectionSlug = parts[1];
+        
+        // Find the tier 2 header
+        const header = document.querySelector(`.menu-level-2.collapsible[data-markdown="${markdownFile}"]`);
+        if (!header) return;
+        
+        const groupId = header.getAttribute('data-group');
+        const target = document.querySelector(`.menu-group[data-group="${groupId}"]`);
+        
+        if (!target) return;
+        
+        // Open the tier 2 section if not already open
+        if (!target.classList.contains('open')) {
+          header.click(); // This will trigger loading and open the section
+        }
+        
+        // If there's a section slug, wait for subsections to load then open it
+        if (sectionSlug) {
+          const tryOpenSection = () => {
+            const buttons = target.querySelectorAll('.project-link');
+            if (buttons.length === 0) {
+              // Subsections not loaded yet, try again
+              setTimeout(tryOpenSection, 100);
+              return;
+            }
+            
+            // Find the button with matching slug
+            buttons.forEach(btn => {
+              const btnText = btn.textContent.trim();
+              const btnSlug = createSlug(btnText);
+              if (btnSlug === sectionSlug) {
+                btn.click();
+              }
+            });
+          };
+          
+          // Wait a bit for subsections to load
+          setTimeout(tryOpenSection, 200);
+        }
+        // If no section slug, just open the dropdown (don't open modal)
+        // User can click "all" button to see full content
+      }
+
+      // Load tier 2 headers from markdown files on page load
+      function loadTier2Headers() {
+        document.querySelectorAll('.menu-level-2.collapsible[data-markdown]').forEach(header => {
+          const markdownFile = header.getAttribute('data-markdown');
+          
+          // Check cache first
+          if (markdownCache[markdownFile]) {
+            const h1Title = extractH1(markdownCache[markdownFile]);
+            if (h1Title) {
+              header.textContent = h1Title.toUpperCase();
+            }
+            return;
+          }
+          
+          // Fetch markdown file
+          fetch(`projects/${markdownFile}.md`)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('File not found');
+              }
+              return response.text();
+            })
+            .then(markdown => {
+              markdownCache[markdownFile] = markdown;
+              const h1Title = extractH1(markdown);
+              if (h1Title) {
+                header.textContent = h1Title.toUpperCase();
+              }
+            })
+            .catch(error => {
+              console.error('Error loading markdown for header:', error);
+            });
+        });
+      }
+
+      // Handle initial hash on page load
+      window.addEventListener('DOMContentLoaded', () => {
+        // Load tier 2 headers first
+        loadTier2Headers();
+        
+        // Then handle hash navigation if present
+        if (window.location.hash) {
+          handleHashNavigation();
+        }
+      });
+
+      // Handle hash changes (browser back/forward)
+      window.addEventListener('hashchange', handleHashNavigation);
     </script>
   </body>
 </html>

@@ -1,2 +1,0 @@
-# ERP Systems Implementation (Apricot)
-

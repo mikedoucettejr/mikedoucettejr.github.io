@@ -1,2 +1,0 @@
-# IDEAL IMAGE
-
