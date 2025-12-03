@@ -48,7 +48,10 @@ Jan 2024 – Jun 2025
 
 ## Cederberg Kitchens & Additions
 
-Carpenter on NC-area home renovation & kitchen installation jobs. Installed cabinets, framed walls, helped with layout, and ensured material readiness. Saw project below from slab to drywall installation and finishing. 
+Carpenter on NC-area home renovation & kitchen installation jobs. Installed cabinets, framed walls, helped with layout, and ensured material readiness. Saw project below from slab to drywall installation and finishing.
+
+- Assisted lead carpenters in framing, deck building, window/door installation, insulation installation, roofing, and trim.
+- Cleaned and maintained a safe environment on various renovation projects. 
 
 <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start;">
   <img src="/assets/Portfolio-images/ceder/reno_IMG_0045.jpg" alt="Kitchens & Additions 7" style="width: calc(16.66% - 8.33px); height: 200px; flex: 0 0 auto; display: block; object-fit: cover;" />
